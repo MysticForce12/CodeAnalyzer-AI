@@ -1,6 +1,7 @@
 const express = require("express");
 const cors = require("cors");
 const cookieParser = require("cookie-parser");
+const authRoutes = require("./routes/authroutes");
 
 const app = express();
 
@@ -14,6 +15,8 @@ app.use(
     credentials: true,
   })
 );
+
+app.use("/api/auth", authRoutes);
 
 app.get("/", (req, res) => {
     res.send("API is working");
