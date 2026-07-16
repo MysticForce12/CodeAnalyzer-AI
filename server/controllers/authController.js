@@ -100,7 +100,17 @@ const loginUser = async(req, res) => {
     }
 };
 
+const getCurrentUser = (req, res) => {
+
+    res.status(200).json({
+        success: true,
+        user: req.user
+    });
+
+};
+
 module.exports = {
     registerUser,
-    loginUser
+    loginUser,
+    getCurrentUser
 };
