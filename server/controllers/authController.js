@@ -1,6 +1,7 @@
 const User = require("../models/User");
 const bcrypt = require("bcrypt");
 const generateToken = require("../utils/generateToken");
+const baseCookieOptions = require("../utils/cookieOptions");
 const cookieOptions = require("../utils/cookieOptions");
 
 const registerUser = async(req, res) => {
@@ -101,7 +102,6 @@ const loginUser = async(req, res) => {
 };
 
 const getCurrentUser = (req, res) => {
-
     res.status(200).json({
         success: true,
         user: req.user
@@ -109,8 +109,17 @@ const getCurrentUser = (req, res) => {
 
 };
 
+const logoutUser = (req, res) =>{
+    res.clearCookie("token", baseCookieOptions);
+    res.status(200).json({
+        success: true,
+        message: "User logged out successfully"
+    });
+}
+
 module.exports = {
     registerUser,
     loginUser,
-    getCurrentUser
+    getCurrentUser,
+    logoutUser
 };
