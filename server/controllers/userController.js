@@ -5,7 +5,6 @@ const getCurrentUser = (req, res) => {
         success: true,
         user: req.user
     });
-
 };
 
 const updateCurrentUser = async(req, res) => {
