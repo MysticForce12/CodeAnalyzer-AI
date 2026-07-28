@@ -1,0 +1,17 @@
+{
+  "name": "codeanalyzer-ai",
+  "version": "1.0.0",
+  "description": "An AI-powered code review platform built with the MERN stack. Users can authenticate, submit source code, receive AI-generated feedback, manage previous analyses, and export reports.",
+  "main": "index.js",
+  "scripts": {
+    "dev": "concurrently \"npm --prefix server run dev\" \"npm --prefix client run dev\"",
+    "client": "npm --prefix client run dev",
+    "server": "npm --prefix server run dev"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "concurrently": "^10.0.4"
+  }
+}
