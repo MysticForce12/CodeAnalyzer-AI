@@ -1,17 +1,34 @@
-async function analyzeCode(language, code) {
-    return `
-        Summary:
-        The ${language} code looks syntactically correct.
+const ai = require("../config/gemini");
 
-        Suggestions:
-        - Use meaningful variable names.
-        - Add comments.
-        - Handle edge cases.
+async function analyzeCode(language, code){
 
-        Complexity:
-        Time: O(n)
-        Space: O(1)
-        `;
+    const prompt = `
+        You are a senior software engineer.
+
+        Analyze the following ${language} code.
+
+        Provide:
+        1. Summary
+        2. Strengths
+        3. Issues
+        4. Suggestions
+        5. Time Complexity
+        6. Space Complexity
+
+        Return the response in Markdown.
+
+        Code:
+        ${code}
+    `;
+
+    const response = await ai.models.generateContent({
+        model: "gemini-3.6-flash",
+        contents: prompt,
+    });
+
+    return response.text;
 }
 
-module.exports = { analyzeCode };
+module.exports = {
+    analyzeCode
+};
