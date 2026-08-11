@@ -1,8 +1,9 @@
 import Editor from "@monaco-editor/react";
 
 function CodeEditor({ code, setCode, language }){
+    
     return (
-        <div className="h-[75vh] border rounded overflow-hidden">
+        <div className="h-full overflow-hidden rounded-lg">
             <Editor
                 height="100%"
                 language={language}
@@ -11,7 +12,7 @@ function CodeEditor({ code, setCode, language }){
                 onChange={ (value)=>setCode(value || "") } 
                 options={{
                     minimap:{ enabled: false },
-                    fontSize: 14,
+                    fontSize: 13,
                     automaticLayout: true,
                     wordWrap: "on",
                     scrollBeyondLastLine: false,

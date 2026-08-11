@@ -12,13 +12,13 @@ async function analyze(req, res){
 
         const analysis = await analyzeCode(language, code);
 
-        res.status(200).json({
+        return res.status(200).json({
             analysis,
         });
 
     } catch(err){
         console.error("Analysis Error: ", err);
-        res.status(500).json({
+        return res.status(500).json({
             message: err.message ||"Failed to analyze code",
         });
     }

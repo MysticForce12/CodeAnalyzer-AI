@@ -40,76 +40,109 @@ function Register(){
     };
 
     return (
-        <div className="min-h-screen flex items-center justify-center bg-gray-100">
-            <div className="w-full max-w-md bg-white p-8 rounded-lg shadow-md">
-                
-                <h1 className="text-3xl font-bold text-center mb-6">
-                    Register
-                </h1>
+        <div className="flex min-h-screen items-center justify-center bg-slate-950 px-6 py-12">
 
-                {error && <p className="text-red-500 text-center mb-4">{error}</p>}
+            <div className="w-full max-w-md">
 
-                <form onSubmit={handleSubmit}>
-                    
-                    <div className="mb-4">
-                        <label htmlFor="name" className="block mb-2 font-medium">
-                            Name
-                        </label>
+                <div className="mb-8 text-center">
 
-                        <input
-                            type="text"
-                            id="name"
-                            name="name"
-                            value={name}
-                            onChange={handleChange}
-                            className="w-full border rounded-md p-2"
-                            placeholder="Enter your name"
-                        />
+                    <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-xl border border-blue-500/20 bg-blue-500/10 text-xl text-blue-400">
+                       🔅
                     </div>
 
-                    <div className="mb-4">
-                        <label htmlFor="email" className="block mb-2 font-medium">
-                            Email
-                        </label>
+                    <h1 className="mt-5 text-2xl font-semibold tracking-tight text-white">
+                        Create your account
+                    </h1>
 
-                        <input
-                            type="email"
-                            id="email"
-                            name="email"
-                            value={email}
-                            onChange={handleChange}
-                            className="w-full border rounded-md p-2"
-                            placeholder="Enter your email"
-                        />
-                    </div>
+                    <p className="mt-2 text-sm text-slate-400">
+                        Start analyzing your code with AI-powered insights.
+                    </p>
 
-                    <div className="mb-6">
-                        <label htmlFor="password" className="block mb-2 font-medium">
-                            Password
-                        </label>
+                </div>
 
-                        <input
-                            type="password"
-                            id="password"
-                            name="password"
-                            value={password}
-                            onChange={handleChange}
-                            className="w-full border rounded-md p-2"
-                            placeholder="Enter your password"
-                        />
-                    </div>
+                <div className="rounded-xl border border-slate-800 bg-slate-900 p-6 shadow-xl">
 
-                    <button 
-                        type="submit" 
-                        disabled={loading}  
-                        className="w-full bg-blue-600 text-white py-2 rounded-md hover:bg-blue-700 transition"
+                    {error && (
+                        <div className="mb-5 rounded-lg border border-red-500/20 bg-red-500/10 px-4 py-3 text-sm text-red-400">
+                            {error}
+                        </div>
+                    )}
+
+                    <form onSubmit={handleSubmit}>
+
+                        <div className="mb-5">
+                            <label htmlFor="name" className="mb-2 block text-sm font-medium text-slate-300">
+                                Name
+                            </label>
+
+                            <input
+                                type="text"
+                                id="name"
+                                name="name"
+                                value={name}
+                                onChange={handleChange}
+                                className="w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2.5 text-sm text-slate-200 outline-none placeholder:text-slate-600 transition focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
+                                placeholder="Your name"
+                            />
+                        </div>
+
+                        <div className="mb-5">
+                            <label htmlFor="email" className="mb-2 block text-sm font-medium text-slate-300">
+                                Email
+                            </label>
+
+                            <input
+                                type="email"
+                                id="email"
+                                name="email"
+                                value={email}
+                                onChange={handleChange}
+                                className="w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2.5 text-sm text-slate-200 outline-none placeholder:text-slate-600 transition focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
+                                placeholder="you@example.com"
+                            />
+                        </div>
+
+                        <div className="mb-6">
+                            <label htmlFor="password" className="mb-2 block text-sm font-medium text-slate-300">
+                                Password
+                            </label>
+
+                            <input
+                                type="password"
+                                id="password"
+                                name="password"
+                                value={password}
+                                onChange={handleChange}
+                                className="w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2.5 text-sm text-slate-200 outline-none placeholder:text-slate-600 transition focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
+                                placeholder="Create a password"
+                            />
+                        </div>
+
+                        <button
+                            type="submit"
+                            disabled={loading}
+                            className="w-full rounded-lg bg-blue-600 py-2.5 text-sm font-semibold text-white transition hover:bg-blue-500 disabled:cursor-not-allowed disabled:opacity-60"
+                        >
+                            {loading ? "Creating account..." : "Create account"}
+                        </button>
+
+                    </form>
+
+                </div>
+
+                <p className="mt-6 text-center text-sm text-slate-500">
+                    Already have an account?{" "}
+                    <button
+                        type="button"
+                        onClick={() => navigate("/login")}
+                        className="font-medium text-blue-400 transition hover:text-blue-300"
                     >
-                        {loading ? "Loading..." : "Register"}
+                        Sign in
                     </button>
-
-                </form>
+                </p>
 
             </div>
+
         </div>
     );
 }
